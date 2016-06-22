@@ -12,6 +12,7 @@ $frequency  = 'N.A';
 $cache      = 'N.A';
 $bogomips   = 'N.A';
 $temp       = 'N.A';
+$fan_speed  = 'N.A';
 
 if ($cpuinfo = shell_exec('cat /proc/cpuinfo'))
 {
@@ -78,6 +79,15 @@ if ($Config->get('cpu:enable_temperature'))
     }
 }
 
+// CPU Fan Speed (Added by Nich)
+if (exec('/usr/bin/sensors | grep -E "^(CPU FAN)" | cut -d \' \' -f8', $fs))
+{
+    if (isset($fs[0]))
+    {
+        $fan_speed = $fs[0].' RPM';
+    }
+}
+
 
 $datas = array(
     'model'      => $model,
@@ -86,6 +96,7 @@ $datas = array(
     'cache'      => $cache,
     'bogomips'   => $bogomips,
     'temp'       => $temp,
+    'fan_speed'  => $fan_speed,
 );
 
 echo json_encode($datas);

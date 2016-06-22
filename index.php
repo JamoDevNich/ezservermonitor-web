@@ -7,7 +7,7 @@ $update = $Config->checkUpdate();
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1" /> 
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>eZ Server Monitor - <?php echo Misc::getHostname(); ?></title>
     <link rel="stylesheet" href="web/css/utilities.css" type="text/css">
     <link rel="stylesheet" href="web/css/frontend.css" type="text/css">
@@ -170,16 +170,20 @@ $update = $Config->checkUpdate();
                         <td>Cache</td>
                         <td id="cpu-cache"></td>
                     </tr>
-                    <tr>
+                    <!--tr>
                         <td>Bogomips</td>
                         <td id="cpu-bogomips"></td>
-                    </tr>
+                    </tr-->
                     <?php if ($Config->get('cpu:enable_temperature')): ?>
                         <tr>
                             <td>Temperature</td>
                             <td id="cpu-temp"></td>
                         </tr>
                     <?php endif; ?>
+                    <tr>
+                        <td>Fan Speed</td>
+                        <td id="cpu-fan_speed"></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -238,7 +242,7 @@ $update = $Config->checkUpdate();
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                 </tbody>
             </table>
         </div>
@@ -372,7 +376,7 @@ $update = $Config->checkUpdate();
 
     </div>
 
-    
+
 
     <div class="cls"></div>
 
